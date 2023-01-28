@@ -26,17 +26,17 @@ function oninputEvent(e) {
 function checkAmountCountries(countries) {
   if (countries.length === undefined) {
     Notiflix.Notify.failure('Oops, there is no country with that name');
+    clearMarkup();
   } else if (countries.length >= 10) {
     clearMarkup();
     Notiflix.Notify.info(
       'Too many matches found. Please enter a more specific name.'
     );
-    console.log(countries);
   } else if (countries.length >= 2 && countries.length <= 10) {
-    divEl.innerHTML = '';
+    clearMarkup();
     ulEl.insertAdjacentHTML('beforeend', createCountriesList(countries));
   } else if (countries.length === 1) {
-    ulEl.innerHTML = '';
+    clearMarkup();
     divEl.insertAdjacentHTML('beforeend', createMarkupCountry(countries));
   }
 }
